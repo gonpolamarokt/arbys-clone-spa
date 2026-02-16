@@ -2,7 +2,7 @@ import React from "react";
 import ExperienceConfirmationPage from './ExperienceConfirmationPage';
 import { getRoktLauncher } from "../rokt/launcher";
 
-export default function Dashboard({ order }) {
+export default function Dashboard({ order, onCreateAnotherOrder }) {
   const selectionRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -42,6 +42,7 @@ export default function Dashboard({ order }) {
       <ExperienceConfirmationPage
         order={order}
         bannerText="This was the Rokt Thanks experience"
+        onCreateAnotherOrder={onCreateAnotherOrder}
       />
     )
   }

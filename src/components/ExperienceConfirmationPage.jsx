@@ -11,7 +11,9 @@ function ExperienceConfirmationPage({
   showExperienceBanner = true,
   showFooter = true,
   unstyledExperienceBanner = false,
-  unstyledFooter = false
+  unstyledFooter = false,
+  afterConfirmationContent = null,
+  onCreateAnotherOrder
 }) {
   if (!order) {
     return (
@@ -66,12 +68,14 @@ function ExperienceConfirmationPage({
             <span>{currency.format(order.total)}</span>
           </p>
         </div>
-        <Link to="/menu" className="btn btn-secondary">
+        <Link to="/" className="btn btn-secondary" onClick={onCreateAnotherOrder}>
           Create Another Order
         </Link>
       </section>
 
-      <div id="rokt-placeholder"></div>
+
+
+      {afterConfirmationContent ?? <div id="rokt-placeholder"></div>}
 
       {showFooter && (
         unstyledFooter ? (

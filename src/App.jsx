@@ -8,6 +8,7 @@ import DeliveryDetailsPage from './components/DeliveryDetailsPage';
 import ShoppableAds from './components/ShoppableAds';
 import RoktThanks from './components/RoktThanks';
 import { menuItems } from './data/menuItems';
+import { resetRoktLauncherForDebug } from './rokt/launcher';
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -57,6 +58,11 @@ function App() {
     setCart([]);
   };
 
+  const startNewOrder = () => {
+    setLatestOrder(null);
+    resetRoktLauncherForDebug();
+  };
+
   return (
     <>
       <Header cartCount={cartCount} />
@@ -100,8 +106,14 @@ function App() {
             />
           }
         />
-        <Route path="/shoppable-ads" element={<ShoppableAds order={latestOrder} />} />
-        <Route path="/rokt-thanks" element={<RoktThanks order={latestOrder} />} />
+        <Route
+          path="/shoppable-ads"
+          element={<ShoppableAds order={latestOrder} onCreateAnotherOrder={startNewOrder} />}
+        />
+        <Route
+          path="/rokt-thanks"
+          element={<RoktThanks order={latestOrder} onCreateAnotherOrder={startNewOrder} />}
+        />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>

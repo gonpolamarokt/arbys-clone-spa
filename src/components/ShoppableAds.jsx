@@ -2,8 +2,13 @@ import React from "react";
 import ExperienceConfirmationPage from './ExperienceConfirmationPage';
 import { getRoktLauncher } from "../rokt/launcher";
 
-function ShoppableAds({ order }) {
+function ShoppableAds({ order, onCreateAnotherOrder }) {
   const selectionRef = React.useRef(null);
+  const afterConfirmationContent = order ? (
+    <rokt-thank-you loader="/loader.gif" id="rokt_thank_you_container">
+      <div id="rokt-placeholder"></div>
+    </rokt-thank-you>
+  ) : null;
 
   React.useEffect(() => {
     let cancelled = false;
@@ -59,6 +64,8 @@ function ShoppableAds({ order }) {
       bannerText="This was the Shoppable Ads experience"
       unstyledExperienceBanner={true}
       unstyledFooter={true}
+      afterConfirmationContent={afterConfirmationContent}
+      onCreateAnotherOrder={onCreateAnotherOrder}
     />
   );
 }
