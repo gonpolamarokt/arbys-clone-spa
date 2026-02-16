@@ -556,6 +556,16 @@ a {
   letter-spacing: 0.1px;
 }
 
+.experience-result-banner-text {
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto 16px;
+  color: var(--terracotta);
+  letter-spacing: 0.1px;
+  font-family: 'Cormorant Garamond', serif;
+  text-transform: uppercase;
+}
+
 .experience-wrap h2 {
   margin-bottom: 12px;
 }
@@ -737,6 +747,19 @@ a {
 }
 
 .experience-footer a {
+  color: var(--terracotta);
+  text-decoration: underline;
+}
+
+.experience-footer-text {
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto;
+  font-size: 0.9rem;
+  color: #6a5544;
+}
+
+.experience-footer-text a {
   color: var(--terracotta);
   text-decoration: underline;
 }

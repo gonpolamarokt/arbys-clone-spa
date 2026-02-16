@@ -5,7 +5,14 @@ const currency = new Intl.NumberFormat('en-US', {
   currency: 'USD'
 });
 
-function ExperienceConfirmationPage({ order, bannerText }) {
+function ExperienceConfirmationPage({
+  order,
+  bannerText,
+  showExperienceBanner = true,
+  showFooter = true,
+  unstyledExperienceBanner = false,
+  unstyledFooter = false
+}) {
   if (!order) {
     return (
       <main className="container page-space empty-state">
@@ -20,9 +27,15 @@ function ExperienceConfirmationPage({ order, bannerText }) {
 
   return (
     <main className="container page-space checkout-page">
-      <section className="experience-result-banner">
-        <h1>{bannerText}</h1>
-      </section>
+      {showExperienceBanner && (
+        unstyledExperienceBanner ? (
+          <h1 className="experience-result-banner-text">{bannerText}</h1>
+        ) : (
+          <section className="experience-result-banner">
+            <h1>{bannerText}</h1>
+          </section>
+        )
+      )}
 
       <section className="confirmation-card">
         <p className="eyebrow">Order Confirmed</p>
@@ -58,12 +71,25 @@ function ExperienceConfirmationPage({ order, bannerText }) {
         </Link>
       </section>
 
-      <footer className="experience-footer">
-        For $5 off your next order, please click {' '}
-        <a href="https://youtu.be/Jlulw8U4Ynk" target="_blank" rel="noreferrer">
-          here
-        </a>
-      </footer>
+      <div id="rokt-placeholder"></div>
+
+      {showFooter && (
+        unstyledFooter ? (
+          <p className="experience-footer-text">
+            For $5 off your next order, please click {' '}
+            <a href="https://youtu.be/Jlulw8U4Ynk" target="_blank" rel="noreferrer">
+              here
+            </a>
+          </p>
+        ) : (
+          <footer className="experience-footer">
+            For $5 off your next order, please click {' '}
+            <a href="https://youtu.be/Jlulw8U4Ynk" target="_blank" rel="noreferrer">
+              here
+            </a>
+          </footer>
+        )
+      )}
     </main>
   );
 }
