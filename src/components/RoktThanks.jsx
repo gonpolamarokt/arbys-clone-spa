@@ -7,6 +7,7 @@ export default function Dashboard({ order }) {
 
   React.useEffect(() => {
     let cancelled = false;
+    if (!order) return;
 
     async function run() {
       const launcher = await getRoktLauncher();
@@ -15,7 +16,12 @@ export default function Dashboard({ order }) {
       const selection = await launcher.selectPlacements({
         identifier: "RociConf",
         attributes: {
-          email: "j.smith@example.com",
+          email: order?.customer?.email,
+          firstname: order?.customer?.firstName,
+          lastname: order?.customer?.lastName,
+          paymentMethod: order?.customer?.paymentMethod,
+          billingzipcode: order?.customer?.zipcode,
+          confirmationref: order?.orderId,
         },
       });
 
@@ -31,7 +37,7 @@ export default function Dashboard({ order }) {
         selectionRef.current = null;
       }
     };
-  }, []);
+  }, [order]);
     return (
       <ExperienceConfirmationPage
         order={order}
