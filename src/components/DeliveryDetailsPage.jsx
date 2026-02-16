@@ -13,7 +13,6 @@ function DeliveryDetailsPage({ cart, subtotal, tax, total, onPlaceOrder }) {
     firstName: '',
     lastName: '',
     email: '',
-    mobileNumber: '',
     paymentMethod: '',
     cardholderFirstName: '',
     cardholderLastName: '',
@@ -117,24 +116,6 @@ function DeliveryDetailsPage({ cart, subtotal, tax, total, onPlaceOrder }) {
                     required
                     title="Please enter a valid email address."
                     placeholder="jane@example.com"
-                  />
-                </label>
-                <label>
-                  <span className="label-text">
-                    Mobile Number <span className="required-asterisk">*</span>
-                  </span>
-                  <input
-                    type="tel"
-                    name="mobileNumber"
-                    value={formData.mobileNumber}
-                    onChange={handleChange}
-                    required
-                    inputMode="numeric"
-                    pattern="^[0-9]{10}$"
-                    minLength={10}
-                    maxLength={10}
-                    title="Please enter exactly 10 digits."
-                    placeholder="5551234567"
                   />
                 </label>
               </div>

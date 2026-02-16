@@ -45,10 +45,6 @@ function ExperienceConfirmationPage({ order, bannerText }) {
             <span>{order.customer.email}</span>
           </p>
           <p>
-            <span>Mobile Number</span>
-            <span>{order.customer.mobileNumber}</span>
-          </p>
-          <p>
             <span>Experience</span>
             <span>{order.customer.experience}</span>
           </p>
