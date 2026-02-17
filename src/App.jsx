@@ -13,6 +13,7 @@ import { resetRoktLauncherForDebug } from './rokt/launcher';
 function App() {
   const [cart, setCart] = useState([]);
   const [latestOrder, setLatestOrder] = useState(null);
+  const [hideChrome, setHideChrome] = useState(false);
 
   const addToOrder = (item) => {
     setCart((current) => {
@@ -65,7 +66,7 @@ function App() {
 
   return (
     <>
-      <Header cartCount={cartCount} />
+      {!hideChrome && <Header cartCount={cartCount} />}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route
@@ -108,7 +109,14 @@ function App() {
         />
         <Route
           path="/shoppable-ads"
-          element={<ShoppableAds order={latestOrder} onCreateAnotherOrder={startNewOrder} />}
+          element={
+            <ShoppableAds
+              order={latestOrder}
+              onCreateAnotherOrder={startNewOrder}
+              onHideUI={() => setHideChrome(true)}
+              onShowUI={() => setHideChrome(false)}
+            />
+          }
         />
         <Route
           path="/rokt-thanks"
